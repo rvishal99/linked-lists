@@ -79,7 +79,7 @@ Node* reverseLinkedList(Node *head) // recursive method
    Node* curr =  head;
    Node* prev = NULL;
    reverseLLRecursion(head,curr,prev);
-   return head;
+   return head; // here the head is head of reversed ll
 }
 //recursion approach part-2
 // It will return head of the reverse list
