@@ -69,9 +69,10 @@ void reverseLLRecursion(Node*&head,Node*&curr,Node*&prev)
 	}
 	
 	Node * forward = curr->next; // order: prev,curr,forward
+	curr->next = prev; // pointing backwards
+	
 	reverseLLRecursion(head,forward,curr);
 	
-	curr->next = prev; // pointing backwards
 }
 Node* reverseLinkedList(Node *head) // recursive method
 {
