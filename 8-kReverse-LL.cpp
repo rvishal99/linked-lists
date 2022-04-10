@@ -12,26 +12,36 @@ public:
         this->next = NULL;
     }
 };
-bool isCircularLL(Node* &head)
-{
+Node* kReverse(Node* head, int k) {
+    //base case 
     if(head==NULL)
     {
-        return true;
-
+       return NULL; 
+    }
+    //step1 revesre first k nodes
+    Node* forward = NULL;
+    Node* curr = head;
+    Node * prev  = NULL;
+    int cnt  = 0;
+    
+    while(curr !=NULL && cnt<k)
+    {
+ 	    forward = curr -> next  ;
+        curr->next =prev;
+        prev = curr;
+        curr  = forward;
+        cnt++;
     }
     
-    Node*temp = head->next;
-    while(temp!=NULL && temp!=head)
+    //Step 2 Recursion dek legaa aage ka
+    if(forward !=NULL)
     {
-       temp = temp->next;
+        head->next = kReverse(forward,k);
     }
-    if(temp==head)
-    {
-        return true;
-    } 
-       return false;
-}
-int main()
+    //Step 3: return head of reversed list
+    return prev;
+    
+}int main()
 {
 
     return 0;
