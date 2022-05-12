@@ -90,6 +90,38 @@ void insertAtposition(node *head, node *tail, int d, int position)
     temp->next = tobeInserted;
     tobeInserted->prev = temp;
 }
+void deleteNode(node * &head,int position)
+{
+    if(position==1)
+    {
+        node * temp = head;
+        temp->next->prev = NULL;
+        head = temp->next;
+        
+        temp->next = NULL;
+        delete temp;
+    }
+    else
+    {
+        //deleting any middle 
+        node * curr = head;
+        node * prev = NULL;
+
+        int cnt = 1;
+        while(cnt<position)
+        {
+            prev = curr;
+            curr = curr->next;
+            cnt++;
+        }
+        curr->prev = NULL;
+        prev->next = curr->next;
+        curr->next = NULL;
+
+        delete curr;
+    }
+}
+
 int main()
 {
     node *node1 = new node(10);
